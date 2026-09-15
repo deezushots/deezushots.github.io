@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login — Deezu Shots</title>
+<link rel="icon" href="../assets/img/logo.webp">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="auth-card">
+  <img src="../assets/img/logo.webp" alt="Deezu Shots logo" class="auth-logo">
+  <h1>Site admin</h1>
+  <p class="muted">Log in to edit the site's content, categories, and portfolio.</p>
+
+  <form id="loginForm">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required autocomplete="current-password">
+    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:1rem;">Log in</button>
+  </form>
+
+  <p id="loginError" class="form-error" hidden></p>
+
+  <a href="../index.html" class="back-link">← Back to the site</a>
+</div>
+
+<script src="../js/config.js"></script>
+<script>
+  const form = document.getElementById("loginForm");
+  const errorEl = document.getElementById("loginError");
+
+  if (localStorage.getItem("deezuAdminToken")) {
+    window.location.href = "dashboard.html";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl.hidden = true;
+    const password = document.getElementById("password").value;
+
+    try {
+      const res = await fetch(`${window.API_BASE_URL}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Login failed.");
+
+      localStorage.setItem("deezuAdminToken", data.token);
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      errorEl.textContent = err.message;
+      errorEl.hidden = false;
+    }
+  });
+</script>
+</body>
+</html>

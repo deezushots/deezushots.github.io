@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Deezu Shots Admin</title>
+<link rel="icon" href="../assets/img/logo.webp">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<header class="dash-header">
+  <div class="wrap">
+    <h1>Deezu Shots — Admin</h1>
+    <nav class="dash-nav">
+      <a href="../index.html" target="_blank" rel="noopener">View site ↗</a>
+      <button class="logout-btn" id="logoutBtn">Log out</button>
+    </nav>
+  </div>
+</header>
+
+<main class="dash-main">
+  <div class="wrap">
+
+    <!-- Site content -->
+    <section class="dash-section">
+      <h2>Site content</h2>
+      <p class="muted">These fields control the text shown across the public site, including the business address.</p>
+      <form id="contentForm">
+        <div class="field-grid">
+          <div class="field"><label for="brandName">Brand name</label><input id="brandName" name="brandName"></div>
+          <div class="field"><label for="tagline">Hero headline</label><input id="tagline" name="tagline"></div>
+          <div class="field field-full"><label for="heroSubtext">Hero subtext</label><textarea id="heroSubtext" name="heroSubtext" style="min-height:70px;"></textarea></div>
+
+          <div class="field"><label for="bioName">Owner name</label><input id="bioName" name="bioName"></div>
+          <div class="field"><label for="bioAka">Also known as</label><input id="bioAka" name="bioAka"></div>
+          <div class="field field-full"><label for="bio">Biography</label><textarea id="bio" name="bio" style="min-height:220px;"></textarea></div>
+
+          <div class="field field-full"><label for="address">Business address</label><input id="address" name="address"></div>
+          <div class="field field-full"><label for="mapLink">Google Maps link</label><input id="mapLink" name="mapLink"></div>
+
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone"></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email"></div>
+
+          <div class="field"><label for="facebook">Facebook URL</label><input id="facebook" name="facebook"></div>
+          <div class="field"><label for="instagram">Instagram URL</label><input id="instagram" name="instagram"></div>
+          <div class="field"><label for="threads">Threads URL</label><input id="threads" name="threads"></div>
+          <div class="field"><label for="audiomack">Audiomack URL</label><input id="audiomack" name="audiomack"></div>
+        </div>
+        <div class="save-row">
+          <button type="submit" class="btn btn-primary">Save content</button>
+          <span id="contentStatus"></span>
+        </div>
+      </form>
+    </section>
+
+    <!-- Categories -->
+    <section class="dash-section">
+      <h2>Categories</h2>
+      <p class="muted">Add, rename, or remove the categories under each type of work. Deleting a category doesn't delete its media — that media moves to "Uncategorized".</p>
+      <div class="cat-columns" id="catColumns"></div>
+    </section>
+
+    <!-- Upload -->
+    <section class="dash-section">
+      <h2>Upload new work</h2>
+      <p class="muted">Photos and short video clips both go here. Pick the type and category, then upload.</p>
+      <form id="uploadForm">
+        <div class="field-grid">
+          <div class="field field-full">
+            <label for="file">File</label>
+            <input type="file" id="file" name="file" accept="image/*,video/mp4,video/quicktime,video/webm" required>
+          </div>
+          <div class="field">
+            <label for="uploadType">Type</label>
+            <select id="uploadType" name="type">
+              <option value="photography">Photography</option>
+              <option value="videography">Videography</option>
+              <option value="documentary">Documentary</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="uploadCategory">Category</label>
+            <select id="uploadCategory" name="category"></select>
+          </div>
+          <div class="field"><label for="uploadTitle">Title (optional)</label><input id="uploadTitle" name="title"></div>
+          <div class="field"><label for="uploadCaption">Caption (optional)</label><input id="uploadCaption" name="caption"></div>
+        </div>
+        <div class="save-row">
+          <button type="submit" class="btn btn-primary">Upload</button>
+          <span id="uploadStatus"></span>
+        </div>
+      </form>
+
+      <div class="media-lib" id="mediaLib"></div>
+    </section>
+
+    <!-- Password -->
+    <section class="dash-section">
+      <h2>Change password</h2>
+      <p class="muted">Change this as soon as possible if you're still using the default password.</p>
+      <form id="passwordForm">
+        <div class="field-grid">
+          <div class="field"><label for="currentPassword">Current password</label><input type="password" id="currentPassword" required></div>
+          <div class="field"><label for="newPassword">New password (min. 8 characters)</label><input type="password" id="newPassword" required minlength="8"></div>
+        </div>
+        <div class="save-row">
+          <button type="submit" class="btn btn-primary">Update password</button>
+          <span id="passwordStatus"></span>
+        </div>
+      </form>
+    </section>
+
+  </div>
+</main>
+
+<script src="../js/config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deezu Shots — Photography, Videography &amp; Documentary | Kano, Nigeria</title>
+<meta name="description" content="Deezu Shots is a photography, videography, and documentary brand based in Tarauni, Kano State, Nigeria, led by creative entrepreneur Deezu.">
+<link rel="icon" href="assets/img/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#" class="nav-brand">
+      <img src="assets/img/logo.webp" alt="Deezu Shots logo">
+      <span data-field="brandName">Deezu Shots</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="admin/login.html">Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <p class="hero-eyebrow">Tarauni · Kano State · Nigeria</p>
+      <h1 data-field="tagline">Kano's stories, framed frame by frame.</h1>
+      <p class="lede" data-field="heroSubtext">Photography, videography, and documentary work out of Tarauni, Kano State — built around football pitches, street life, and the people who make Northern Nigeria move.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-primary">See the work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+    <figure class="hero-portrait">
+      <img src="assets/img/deezu-portrait.webp" alt="Deezu, founder and lead creative of Deezu Shots, on a football pitch in Kano">
+      <figcaption><span data-field="bioName">Deezu</span><span data-field="bioAka">Deezu Omm</span></figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="about-name">
+      <strong data-field="bioName">Deezu</strong>
+      Founder &amp; lead creative, Deezu Shots
+    </div>
+    <div class="about-copy" data-field-html="bio">
+      <p>Loading biography…</p>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <p>Browse by discipline, then narrow down by category. New work is added regularly.</p>
+    </div>
+
+    <div class="tabs" id="typeTabs">
+      <button class="tab active" data-type="photography">Photography</button>
+      <button class="tab" data-type="videography">Videography</button>
+      <button class="tab" data-type="documentary">Documentary</button>
+    </div>
+
+    <div class="chips" id="categoryChips"></div>
+
+    <div class="grid" id="mediaGrid"></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div>
+      <div class="section-head" style="margin-bottom:0;">
+        <h2>Let's work together</h2>
+        <p>For bookings, collaborations, or press — reach out directly.</p>
+      </div>
+      <ul class="contact-list">
+        <li><span>Address</span><a href="#" id="mapLink" target="_blank" rel="noopener" data-field="address">Tarauni, Kano State, Nigeria</a></li>
+        <li><span>Phone</span><a href="#" id="phoneLink" data-field="phone">+234 000 000 0000</a></li>
+        <li><span>Email</span><a href="#" id="emailLink" data-field="email">hello@deezushots.com</a></li>
+        <li><span>Facebook</span><a href="#" id="facebookLink" target="_blank" rel="noopener">Break Through HG</a></li>
+      </ul>
+    </div>
+    <div class="map-frame">
+      <h3>Find the studio</h3>
+      <p>Based in Tarauni, Kano State — sessions and collaborations across Northern Nigeria.</p>
+      <a href="#" id="mapButton" target="_blank" rel="noopener" class="btn btn-ghost">Open in Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:1rem;">
+    <span>© <span id="year"></span> <span data-field="brandName">Deezu Shots</span>. All rights reserved.</span>
+    <a href="admin/login.html">Site admin</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <div class="lightbox-inner" id="lightboxInner"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
