@@ -30,14 +30,20 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background:
-    radial-gradient(1100px 520px at 85% -10%, var(--cyan-wash) 0%, transparent 60%),
-    radial-gradient(900px 480px at -10% 30%, #eefaf8 0%, transparent 55%),
+    radial-gradient(1300px 680px at 88% -8%, rgba(56, 210, 196, 0.38) 0%, transparent 56%),
+    radial-gradient(1100px 620px at 6% 18%, rgba(20, 168, 156, 0.22) 0%, transparent 52%),
+    radial-gradient(1000px 560px at 50% 92%, rgba(12, 129, 119, 0.14) 0%, transparent 58%),
     var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 900px) {
+  body { background-attachment: scroll; }
 }
 
 img, video { max-width: 100%; display: block; }
@@ -82,12 +88,15 @@ h1, h2, h3 {
   gap: 0.7rem;
   text-decoration: none;
 }
-.nav-brand img { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; background: #fff; }
+.nav-brand img { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; background: #fff; }
 .nav-brand span {
   font-family: var(--serif);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   letter-spacing: 0.01em;
   color: var(--text);
+}
+@media (max-width: 720px) {
+  .nav-brand img { width: 44px; height: 44px; }
 }
 .nav-links {
   display: flex;
@@ -199,37 +208,39 @@ h1, h2, h3 {
 .btn-ghost { border-color: var(--line); color: var(--text); background: transparent; }
 .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan-dark); background: var(--cyan-wash); }
 
-/* Hero brand mark (logo) card, replacing the old portrait slot */
+/* Hero image frame */
 .hero-mark {
   position: relative;
   border: 1px solid var(--line);
-  background: linear-gradient(155deg, #ffffff 0%, var(--cyan-wash) 100%);
-  padding: 2.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #0d1918;
+  padding: 0;
+  overflow: hidden;
   aspect-ratio: 4/5;
+  box-shadow: 0 24px 48px -20px rgba(12, 129, 119, 0.35);
 }
 .hero-mark img {
-  width: 78%;
-  max-width: 280px;
-  filter: drop-shadow(0 14px 24px rgba(20, 168, 156, 0.18));
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .hero-mark::before {
   content: "";
   position: absolute;
   inset: 14px;
-  border: 1px solid rgba(20, 168, 156, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   pointer-events: none;
 }
 .hero-mark-caption {
   position: absolute;
-  bottom: 1.1rem;
+  bottom: 0;
   left: 0; right: 0;
+  padding: 1.4rem 1.1rem 1rem;
   text-align: center;
   font-size: 0.78rem;
-  color: var(--muted);
+  color: #eafffb;
   letter-spacing: 0.04em;
+  background: linear-gradient(to top, rgba(4, 14, 13, 0.75), transparent);
 }
 
 /* ───────────────────────── Section shell ───────────────────────── */
@@ -247,30 +258,37 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-bottom: 1px solid var(--li
 .about .wrap {
   display: grid;
   grid-template-columns: 0.9fr 1.4fr;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: clamp(2rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
+  grid-template-areas:
+    "name copy"
+    ".    portrait";
 }
 .about-name {
+  grid-area: name;
   font-size: 0.95rem;
   color: var(--muted);
   border-top: 2px solid var(--cyan);
   padding-top: 1rem;
 }
 .about-name strong { color: var(--text); display: block; font-family: var(--serif); font-size: 1.2rem; }
+.about-copy {
+  grid-area: copy;
+}
 .about-copy p { margin: 0 0 1.1rem; color: #33453f; }
 .about-copy p:last-child { margin-bottom: 0; }
 
 .about-portrait {
-  grid-column: 1 / -1;
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-area: portrait;
+  margin-top: 1.5rem;
+  display: flex;
   gap: 1.6rem;
-  align-items: center;
+  align-items: flex-end;
   border-top: 1px solid var(--line);
   padding-top: 2rem;
 }
 .about-portrait img {
-  width: 100%;
+  width: 180px;
+  flex-shrink: 0;
   aspect-ratio: 4/5;
   object-fit: cover;
   object-position: top center;
@@ -278,10 +296,13 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-bottom: 1px solid var(--li
 }
 .about-portrait .cap-eyebrow { color: var(--cyan-dark); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
 .about-portrait h3 { font-style: italic; font-size: 1.3rem; margin-bottom: 0.5rem; }
-.about-portrait p { color: var(--muted); margin: 0; max-width: 42ch; }
-@media (max-width: 640px) {
-  .about-portrait { grid-template-columns: 1fr; }
-  .about-portrait img { max-width: 220px; margin: 0 auto; }
+.about-portrait p { color: var(--muted); margin: 0; max-width: 38ch; }
+@media (max-width: 780px) {
+  .about .wrap { grid-template-areas: "name" "copy" "portrait"; grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .about-portrait { flex-direction: column; align-items: flex-start; }
+  .about-portrait img { width: 160px; }
 }
 
 /* ───────────────────────── Portfolio ───────────────────────── */
@@ -441,6 +462,6 @@ footer.site-footer a { text-decoration: none; color: var(--muted); }
 footer.site-footer a:hover { color: var(--cyan-dark); }
 
 @media (max-width: 780px) {
-  .hero .wrap, .about .wrap, .contact .wrap { grid-template-columns: 1fr; }
+  .hero .wrap, .contact .wrap { grid-template-columns: 1fr; }
   .hero-mark { order: -1; max-width: 340px; margin: 0 auto; }
 }
