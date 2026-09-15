@@ -14,8 +14,8 @@
   padding: 2.5rem;
   text-align: center;
 }
-.auth-logo { width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 1.2rem; }
-.auth-card h1 { font-size: 1.6rem; font-style: italic; }
+.auth-logo { height: 40px; width: auto; margin: 0 auto 1.2rem; }
+.auth-card h1 { font-size: 1.6rem; font-weight: 600; }
 .auth-card .muted { color: var(--muted); font-size: 0.9rem; margin: 0.6rem 0 1.5rem; }
 .auth-card form { text-align: left; }
 .auth-card label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
@@ -60,7 +60,7 @@ textarea { resize: vertical; min-height: 120px; }
   display: flex; align-items: center; justify-content: space-between;
   height: 68px;
 }
-.dash-header .wrap h1 { font-size: 1.1rem; font-style: italic; }
+.dash-header .wrap h1 { font-size: 1.1rem; font-weight: 600; }
 .dash-nav { display: flex; gap: 1.4rem; font-size: 0.88rem; color: var(--muted); }
 .dash-nav a { text-decoration: none; }
 .dash-nav a:hover { color: var(--text); }
@@ -72,7 +72,7 @@ textarea { resize: vertical; min-height: 120px; }
   padding: 2rem;
   margin-bottom: 2rem;
 }
-.dash-section h2 { font-size: 1.4rem; font-style: italic; margin-bottom: 0.4rem; }
+.dash-section h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem; }
 .dash-section > p.muted { color: var(--muted); font-size: 0.88rem; margin: 0 0 1.5rem; }
 
 .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }

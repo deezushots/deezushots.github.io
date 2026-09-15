@@ -49,7 +49,7 @@
     document.getElementById("mapButton").href = mapLink;
 
     const mapEmbed = document.getElementById("mapEmbed");
-    const query = content.address || content.mapLink;
+    const query = content.address || (content.mapLink && !/^https?:\/\//i.test(content.mapLink) ? content.mapLink : null);
     if (query) {
       mapEmbed.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
     }
