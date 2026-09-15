@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Login — Deezu Shots</title>
+<link rel="icon" href="/assets/logo.jpg" />
+<link rel="stylesheet" href="/admin/css/admin.css" />
+</head>
+<body>
+  <div class="login-shell">
+    <div class="login-card">
+      <img src="/assets/logo.jpg" alt="Deezu Shots" />
+      <h1>Dashboard login</h1>
+      <p class="sub">Manage your site's categories, photos, videos and details.</p>
+      <div class="msg error" id="msg"></div>
+      <form id="loginForm">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required />
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
+    </div>
+  </div>
+  <script src="/admin/js/login.js"></script>
+</body>
+</html>
