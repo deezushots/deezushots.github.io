@@ -72,9 +72,14 @@ h1, h2, h3 {
   position: sticky;
   top: 0;
   z-index: 50;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
+}
+.nav.scrolled {
   backdrop-filter: blur(10px);
-  background: rgba(247, 252, 251, 0.82);
-  border-bottom: 1px solid var(--line);
+  background: rgba(247, 252, 251, 0.86);
+  border-bottom-color: var(--line);
 }
 .nav .wrap {
   display: flex;
@@ -213,7 +218,7 @@ h1, h2, h3 {
   position: relative;
   border: 1px solid var(--line);
   background: #0d1918;
-  padding: 0;
+  padding: 14px;
   overflow: hidden;
   aspect-ratio: 4/5;
   box-shadow: 0 24px 48px -20px rgba(12, 129, 119, 0.35);
@@ -223,19 +228,13 @@ h1, h2, h3 {
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
-.hero-mark::before {
-  content: "";
-  position: absolute;
-  inset: 14px;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  pointer-events: none;
 }
 .hero-mark-caption {
   position: absolute;
   bottom: 0;
   left: 0; right: 0;
-  padding: 1.4rem 1.1rem 1rem;
+  padding: 1.8rem 1.5rem 1.4rem;
   text-align: center;
   font-size: 0.78rem;
   color: #eafffb;
@@ -258,51 +257,28 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-bottom: 1px solid var(--li
 .about .wrap {
   display: grid;
   grid-template-columns: 0.9fr 1.4fr;
-  gap: clamp(2rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
-  grid-template-areas:
-    "name copy"
-    ".    portrait";
+  gap: clamp(2rem, 5vw, 4rem);
 }
 .about-name {
-  grid-area: name;
   font-size: 0.95rem;
   color: var(--muted);
   border-top: 2px solid var(--cyan);
   padding-top: 1rem;
 }
-.about-name strong { color: var(--text); display: block; font-family: var(--serif); font-size: 1.2rem; }
-.about-copy {
-  grid-area: copy;
-}
-.about-copy p { margin: 0 0 1.1rem; color: #33453f; }
-.about-copy p:last-child { margin-bottom: 0; }
-
-.about-portrait {
-  grid-area: portrait;
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 1.6rem;
-  align-items: flex-end;
-  border-top: 1px solid var(--line);
-  padding-top: 2rem;
-}
-.about-portrait img {
-  width: 180px;
-  flex-shrink: 0;
+.about-photo {
+  width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
   object-position: top center;
   border: 1px solid var(--line);
+  margin-bottom: 1.3rem;
 }
-.about-portrait .cap-eyebrow { color: var(--cyan-dark); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
-.about-portrait h3 { font-style: italic; font-size: 1.3rem; margin-bottom: 0.5rem; }
-.about-portrait p { color: var(--muted); margin: 0; max-width: 38ch; }
+.about-name strong { color: var(--text); display: block; font-family: var(--serif); font-size: 1.2rem; }
+.about-copy p { margin: 0 0 1.1rem; color: #33453f; }
+.about-copy p:last-child { margin-bottom: 0; }
 @media (max-width: 780px) {
-  .about .wrap { grid-template-areas: "name" "copy" "portrait"; grid-template-columns: 1fr; }
-}
-@media (max-width: 560px) {
-  .about-portrait { flex-direction: column; align-items: flex-start; }
-  .about-portrait img { width: 160px; }
+  .about .wrap { grid-template-columns: 1fr; }
+  .about-photo { max-width: 260px; }
 }
 
 /* ───────────────────────── Portfolio ───────────────────────── */
@@ -440,7 +416,7 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-bottom: 1px solid var(--li
 .map-frame {
   border: 1px solid var(--line);
   padding: 1.6rem;
-  background: linear-gradient(155deg, #ffffff 0%, var(--cyan-wash) 100%);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -448,6 +424,17 @@ section { padding: clamp(3rem, 7vw, 5.5rem) 0; border-bottom: 1px solid var(--li
 }
 .map-frame h3 { font-style: italic; font-size: 1.3rem; color: var(--text); }
 .map-frame p { color: var(--muted); margin: 0; }
+.map-embed {
+  border: 1px solid var(--line);
+  overflow: hidden;
+  aspect-ratio: 16/10;
+}
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
 
 footer.site-footer {
   padding: 2rem 0 3rem;

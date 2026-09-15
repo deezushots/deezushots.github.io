@@ -9,6 +9,14 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  // Nav background only appears once the page is scrolled
+  const navEl = document.querySelector(".nav");
+  function syncNavScroll() {
+    navEl.classList.toggle("scrolled", window.scrollY > 8);
+  }
+  syncNavScroll();
+  window.addEventListener("scroll", syncNavScroll, { passive: true });
+
   // Mobile nav toggle
   const navToggle = document.getElementById("navToggle");
   const navLinks = document.getElementById("navLinks");
@@ -39,6 +47,12 @@
     const mapLink = content.mapLink || "#";
     document.getElementById("mapLink").href = mapLink;
     document.getElementById("mapButton").href = mapLink;
+
+    const mapEmbed = document.getElementById("mapEmbed");
+    const query = content.address || content.mapLink;
+    if (query) {
+      mapEmbed.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+    }
 
     const phoneLink = document.getElementById("phoneLink");
     phoneLink.textContent = content.phone || "";
